@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: scpositioner
+Version: 1.0.0
+Home-page: https://github.com/ZJUFanLab/scPositioner
+Author: Jingyang Qian
+Author-email: qianjingyang@zju.edu.cn
+License: GNU General Public License v3.0
+Requires-Python: >=3.9
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: license
+Dynamic: requires-python

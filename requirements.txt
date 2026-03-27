@@ -1,0 +1,155 @@
+absl-py==2.3.1
+aiohappyeyeballs==2.6.1
+aiohttp==3.12.15
+aiosignal==1.4.0
+anndata==0.10.8
+anytree==2.12.1
+array_api_compat==1.11.2
+astropy==4.2.1
+asttokens @ file:///croot/asttokens_1743630435401/work
+async-timeout==5.0.1
+atomicwrites==1.3.0
+backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
+bokeh==3.1.0
+boltons==19.1.0
+cell2location==0.1.4
+certifi==2025.10.5
+chardet==5.2.0
+charset-normalizer==3.4.4
+chex==0.1.90
+comm @ file:///croot/comm_1709322850197/work
+contextlib2==0.5.5
+contourpy==1.2.1
+cycler==0.12.1
+Cython==3.0.7
+debtcollector==1.21.0
+debugpy @ file:///croot/debugpy_1736267418885/work
+decorator @ file:///home/task_175734045313089/conda-bld/decorator_1757341231509/work
+dit==1.2.3
+docrep==0.3.2
+etils==1.5.2
+exceptiongroup==1.3.0
+executing @ file:///home/task_175706092299047/conda-bld/executing_1757061229711/work
+filelock==3.19.1
+flax==0.8.5
+FlowIO==1.3.0
+FlowKit==1.2.3
+FlowUtils==1.1.0
+fonttools==4.60.1
+frozenlist==1.7.0
+get-annotations==0.1.2
+gseapy==1.1.10
+h5py==3.14.0
+harmonypy==0.0.10
+humanize==4.13.0
+idna==3.11
+igraph==0.11.9
+importlib_metadata @ file:///croot/importlib_metadata-suite_1732633488278/work
+importlib_resources==6.4.4
+ipykernel @ file:///home/task_175758287195775/conda-bld/ipykernel_1757583365701/work
+ipython @ file:///croot/ipython_1694181358621/work
+jax==0.4.30
+jaxlib==0.4.30
+jedi @ file:///croot/jedi_1733987392413/work
+Jinja2==3.1.6
+joblib==1.5.2
+jupyter_client @ file:///croot/jupyter_client_1737570961872/work
+jupyter_core @ file:///croot/jupyter_core_1751991368470/work
+kiwisolver==1.4.7
+legacy-api-wrap==1.4.1
+leidenalg==0.10.2
+lightning==2.5.5
+lightning-utilities==0.15.2
+llvmlite==0.43.0
+louvain==0.7.1
+lxml==6.0.2
+markdown-it-py==3.0.0
+MarkupSafe==3.0.3
+matplotlib==3.9.4
+matplotlib-inline @ file:///home/task_175852012146634/conda-bld/matplotlib-inline_1758520135718/work
+mdurl==0.1.2
+ml_collections==0.1.1
+ml_dtypes==0.5.3
+mpmath==1.3.0
+msgpack==1.1.1
+mudata==0.2.4
+multidict==6.6.4
+multipledispatch==1.0.0
+natsort==8.4.0
+nest-asyncio @ file:///croot/nest-asyncio_1708532673751/work
+networkx==3.2.1
+numba==0.60.0
+numpy==1.23.5
+numpyro==0.19.0
+nvidia-cudnn-cu12==9.1.0.70
+nvidia-cusparselt-cu12==0.6.2
+opencv-python==4.11.0.86
+opt_einsum==3.4.0
+optax==0.2.4
+orbax-checkpoint==0.6.4
+packaging @ file:///croot/packaging_1753775359799/work
+pandas==2.3.2
+parso @ file:///croot/parso_1733963305961/work
+patsy==1.0.1
+pbr==5.2.1
+pexpect @ file:///croot/pexpect_1750072593878/work
+pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
+pillow==11.3.0
+platformdirs @ file:///croot/platformdirs_1744273042065/work
+pluggy==0.12.0
+POT==0.8.0
+prettytable==0.7.2
+progressbar==2.5
+prompt-toolkit @ file:///croot/prompt-toolkit_1704404351921/work
+propcache==0.4.0
+protobuf==6.32.1
+psutil @ file:///croot/psutil_1736367091698/work
+ptyprocess @ file:///tmp/build/80754af9/ptyprocess_1609355006118/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
+pure_eval @ file:///home/task_175706679215407/conda-bld/pure_eval_1757067048166/work
+py==1.8.0
+pyerfa==2.0.1.4
+Pygments @ file:///croot/pygments_1744664109463/work
+pynndescent==0.5.13
+pyparsing==3.2.5
+pyro-api==0.1.2
+pyro-ppl==1.9.1
+pytest==4.6.2
+python-dateutil @ file:///croot/python-dateutil_1716495738603/work
+python-igraph==0.11.9
+python-louvain==0.13
+pytorch-lightning==2.5.5
+pytz==2025.2
+PyYAML==6.0.3
+pyzmq @ file:///croot/pyzmq_1734687138743/work
+requests==2.32.5
+rich==13.7.0
+scanpy==1.10.3
+scikit-learn==1.6.1
+scipy==1.13.1
+scpositioner==1.0.0
+scvi-colab==0.12.0
+scvi-tools==1.1.6.post2
+seaborn==0.13.2
+session_info==1.0.1
+six @ file:///croot/six_1744271502820/work
+spaotsc @ file:///slurm/home/yrd/liaolab/baohudong/workspace/spaotsc/SpaOTsc-master
+stack_data @ file:///home/task_175706614279725/conda-bld/stack_data_1757067036628/work
+statsmodels==0.14.5
+stdlib-list==0.11.1
+sympy==1.13.1
+tensorstore==0.1.69
+texttable==1.7.0
+threadpoolctl==3.5.0
+toolz==1.0.0
+torchmetrics==1.8.2
+tornado @ file:///croot/tornado_1748956929273/work
+tqdm==4.67.1
+traitlets @ file:///croot/traitlets_1718227057033/work
+typing_extensions==4.15.0
+tzdata==2024.1
+umap-learn==0.5.9.post2
+urllib3==2.5.0
+wcwidth @ file:///croot/wcwidth_1750352883074/work
+xyzservices==2025.4.0
+yarl==1.20.1
+zipp @ file:///croot/zipp_1732630741423/work
