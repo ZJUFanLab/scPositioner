@@ -240,7 +240,7 @@ class HighResMapper:
 
         # check cell type number, avoid out of memory
         celltype_num_list = [len(R_idx_list[i]) for i in range(len(R_idx_list))]
-        MAX_NUMBER = 50000
+        MAX_NUMBER = 10000
         celltype_over = find_celltype(idx_list=celltype_num_list, MAX_NUM=MAX_NUMBER)
         if len(celltype_over) > 0:
             ratio = [int(np.ceil(celltype_num_list[i] / MAX_NUMBER)) for i in celltype_over]
