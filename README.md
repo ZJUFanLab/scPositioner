@@ -6,7 +6,7 @@
 
 scPositioner is a computational method to map single cells into spatial context and integrate multi omics
 
-![avatar](images/workflow.jpg)
+![avatar](workflow.tif)
 
 
 ### Create and activate conda environment with requirements installed.
@@ -33,10 +33,10 @@ Here is an example of scPositioner on spot-level SRT reference (10X Visium):
 * [Demonstration of scPositioner on the spot-level data](tutorial/tutorial_kidney.ipynb)
 
 An example of scPositioner on single-cell SRT reference (10X Xenium):
-* [Demonstration of scPositioner on the single-cell data](tutorial/tutorial_BC.ipynb)
+* [Demonstration of scPositioner on the single-cell data](tutorial/tutorial_XeniumBC.ipynb)
 
 And an example of scPositioner on multi-omics (snRNA-seq, snATAC-seq, 10X Visium):
-* [Demonstration of scPositioner on the multi-omics data](tutorial/tutorial_heart.ipynb)
+* [Demonstration of scPositioner on the multi-omics data](tutorial/tutorial_intestine.ipynb)
 
 
 ## Acknowledgements
