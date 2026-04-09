@@ -6,7 +6,7 @@
 
 scPositioner is a computational method to map single cells into spatial context and integrate multi omics
 
-![avatar]()
+![avatar](workflow.jpg)
 
 
 ### Create and activate conda environment with requirements installed.
