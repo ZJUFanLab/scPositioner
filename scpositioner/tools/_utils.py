@@ -101,6 +101,65 @@ def estimate_cell_number(adata: AnnData, mean_cell_numbers: int = 5, normalize: 
     return estimated_cell_number
 
 
+def run_cell2location(
+        adata_sc: AnnData,
+        adata_st: AnnData,
+        cell_num_per_spot: int = 5,
+        celltype_key: Optional[str] = 'Cell_type',
+        use_gpu: Optional[bool] = False,
+        sc_epochs: Optional[int] = 1000,
+        st_epochs: Optional[int] = 30000):
+    
+    #import cell2location
+    import cell2location
+    from cell2location.models import RegressionModel
+
+    # sc
+    # prepare anndata for the regression model
+    cell2location.models.RegressionModel.setup_anndata(adata=adata_sc, labels_key=celltype_key)
+    # create the regression model
+    mod = RegressionModel(adata_sc)
+    mod.train(max_epochs=sc_epochs, use_gpu=use_gpu)
+
+    adata_sc = mod.export_posterior(
+        adata_sc, sample_kwargs={'num_samples': 1000, 'batch_size': 2500, 'use_gpu': use_gpu}
+    )
+    # export estimated expression in each cluster
+    if 'means_per_cluster_mu_fg' in adata_sc.varm.keys():
+        inf_aver = adata_sc.varm['means_per_cluster_mu_fg'][[f'means_per_cluster_mu_fg_{i}'
+                                                             for i in adata_sc.uns['mod']['factor_names']]].copy()
+    else:
+        inf_aver = adata_sc.var[[f'means_per_cluster_mu_fg_{i}'
+                                 for i in adata_sc.uns['mod']['factor_names']]].copy()
+    inf_aver.columns = adata_sc.uns['mod']['factor_names']
+
+    # st
+    # prepare anndata for cell2location model
+    cell2location.models.Cell2location.setup_anndata(adata=adata_st)
+    # create and train the model
+    # cell_num_per_spot = np.round(np.mean(adata_st.obs['Estimate_cell_num'])).astype(int)
+    mod = cell2location.models.Cell2location(
+        adata_st,
+        cell_state_df=inf_aver,
+        N_cells_per_location=cell_num_per_spot,
+        detection_alpha=20
+    )
+    mod.train(max_epochs=st_epochs, batch_size=None, train_size=1, use_gpu=use_gpu)
+
+    adata_st = mod.export_posterior(
+        adata_st, sample_kwargs={'num_samples': 1000, 'batch_size': mod.adata.n_obs, 'use_gpu': use_gpu}
+    )
+
+    res = adata_st.obsm['q05_cell_abundance_w_sf']
+    # normalize
+    res = res.div(res.sum(axis=1), axis='rows')
+    column_name = res.columns.tolist()
+    column_name = [column_name[i].replace('q05cell_abundance_w_sf_', '') for i in range(len(column_name))]
+    res.columns = column_name
+
+    return res
+
+
 def check_deconvolution_results(S: AnnData, R: AnnData, deconv_res: pd.DataFrame, celltype_key: str):
     """
     Check and adjust the format of the deconvolution results.
@@ -221,6 +280,26 @@ def adjust_abundance(S: AnnData, R: AnnData, celltype_key: str, seed: int = 0):
     return S_new
 
 
+def simulate_gene_dropout(sc_adata, dropout_rate, seed=0):
+    set_seed(seed)
+    
+    n_genes = sc_adata.n_vars
+    n_drop = int(round(n_genes * dropout_rate))
+
+    gene_names = sc_adata.var_names.to_numpy()
+    
+    dropped_genes = np.random.choice(
+        gene_names,
+        size=n_drop,
+        replace=False
+    )
+
+    kept_mask = ~sc_adata.var_names.isin(dropped_genes)
+    new_adata = sc_adata[:, kept_mask].copy()
+
+    return new_adata
+
+
 def run_OT(S: AnnData, R: AnnData, numItermax: int = 1e6):
     """
     Optimal transport.
@@ -258,27 +337,46 @@ def run_OT(S: AnnData, R: AnnData, numItermax: int = 1e6):
 
 def jitter_coord(coord: np.ndarray, seed: int = 0):
     """
-    Jitter the coodinates
+    Jitter the coordinates
 
     Args:
-        coord (np.ndarray): spatial coodinates of all spots.
+        coord (np.ndarray): spatial coordinates of all spots.
         seed (int, optional): Random seed. Defaults to 0.
 
     Returns:
-        np.ndarray: The jittered spatial coodinates.
+        np.ndarray: The jittered spatial coordinates.
     """
-    # cell number
+    set_seed(seed)
     num = coord.shape[0]
+    
+    if num == 1:
+        tiny_noise = np.random.normal(0, 1e-8, size=(1, 2))
+        return coord + tiny_noise
+    
     # min distance
     coord_unique = np.unique(coord, axis=0)
-    nbrs = NearestNeighbors(n_neighbors=2).fit(coord_unique)
+    n_unique = coord_unique.shape[0]
+    
+    if n_unique < 2:
+        tiny_noise = np.random.normal(0, 1e-8, size=(num, 2))
+        return coord + tiny_noise
+    
+    n_neighbors = min(2, n_unique)
+    nbrs = NearestNeighbors(n_neighbors=n_neighbors).fit(coord_unique)
     distances, _ = nbrs.kneighbors(coord_unique)
-    min_distance = min(distances[:, -1][distances[:, -1] > 0])
+
+    if n_neighbors == 1:
+        min_distance = 1.0
+    else:
+        positive_distances = distances[:, -1][distances[:, -1] > 0]
+        if len(positive_distances) == 0:
+            min_distance = 1.0
+        else:
+            min_distance = min(positive_distances)
 
     x_list = list(coord[:, 0])
     y_list = list(coord[:, 1])
 
-    set_seed(seed)
     length = np.random.uniform(0, min_distance, num)
     radius = np.pi * np.random.uniform(0, 2, num)
 
