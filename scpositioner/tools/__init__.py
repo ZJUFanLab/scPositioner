@@ -6,9 +6,11 @@ __all__ = [
     "filtering",
     "normalize_log",
     "estimate_cell_number",
+    "run_cell2location",
     "check_deconvolution_results",
     "integer_allocation",
     "adjust_abundance",
+    "simulate_gene_dropout",
     "run_OT",
     "jitter_coord",
     "post_process",
@@ -18,4 +20,5 @@ __all__ = [
     "create_new_list",
     "LowResMapper",
     "HighResMapper",
+    "StabilityAnalysis"
 ]
