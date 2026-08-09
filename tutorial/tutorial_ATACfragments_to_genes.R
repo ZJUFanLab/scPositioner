@@ -27,7 +27,7 @@ addArchRThreads(threads = 32)
 # ------------------------------------------------------------------------------
 # Step 1: Prepare example data and reference genome
 # We use two small samples (B001-A-006 and B001-A-302) to demonstrate the full pipeline. 
-# Demo data can be downloaded via xx (placeholder).
+# Demo data can be downloaded via https://drive.google.com/drive/folders/1DntqOZcHvWIsGM990ZPKxUtLhh-p4rw4?usp=drive_link
 # ------------------------------------------------------------------------------
 
 # ---- B001 batch (using 2 samples as demo) ----
