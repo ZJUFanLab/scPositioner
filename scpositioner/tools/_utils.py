@@ -10,6 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 # from tqdm import tqdm
 from datetime import datetime
+from typing import Optional, List
 
 
 def set_seed(seed: int = 0):
