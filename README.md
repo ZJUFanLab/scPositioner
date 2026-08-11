@@ -32,7 +32,9 @@ scPositioner requires single-cell omics data, where cell type label of each cell
 ### For spot-level SRT datasets, scPositioner requires cell-type composition of each spot (deconvolution results).
 
 (Optional) If you don't have cell-type composition of each spot, consider running [cell2location](https://github.com/BayraktarLab/cell2location) first.
+
 (Optional) Here is an example of [running cell2location](tutorial/tutorial_runcell2location.ipynb).
+
 (Optional) You can install both cell2location and scPositioner in the same virtual environment. scPositioner will automatically run cell2location when no deconvolution results are provided.
 
 Here is an example of scPositioner on spot-level SRT reference (10X Visium):
