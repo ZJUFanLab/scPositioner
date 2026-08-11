@@ -53,9 +53,6 @@ An example of scPositioner on single-cell SRT reference (10X Xenium):
 ### For readers concerned with mapping confidence, scPositioner provides a dedicated module and tutorial to evaluate the stability of each mapping.
 * [Mapping confidence evaluation](tutorial/tutorial_StabilityAnalysis.ipynb)
 
-## Acknowledgements
-This work is supported by the New Generation Artificial Intelligence-National Science and Technology Major Project (2025ZD0122805), the National Natural Science Foundation of China (82274213), the Postdoctoral Fellowship Program and China Postdoctoral Science Foundation (BX2026394). The authors thank the High-Performance Computing Cluster of Zhejiang University Innovation Center of Yangtze River Delta for their technical support.
-
 
 ## About
 scPositioner is developed by Jingyang Qian and Hudong Bao. Should you have any questions, please contact Hudong Bao at baohd@zju.edu.cn.
