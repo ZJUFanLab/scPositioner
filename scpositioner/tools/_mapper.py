@@ -71,7 +71,7 @@ class LowResMapper:
         )
 
         # check deconv_res, if it doesn't exsist, automatically run cell2location first
-        if self.deconv_res:
+        if self.deconv_res is not None:
             self.deconv_res = check_deconvolution_results(S=self.S, R=self.R, deconv_res=self.deconv_res, celltype_key=self.celltype_key)
         else:
             print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Deconvolution result not provided, automatically run cell2location...")
