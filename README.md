@@ -18,7 +18,6 @@ conda env create -f environment.yml -n scpositioner
 conda activate scpositioner
 ```
 
-
 ### Install scPositioner
 ```
 python setup.py build
@@ -27,19 +26,33 @@ python setup.py install
 
 ## Tutorials (single cell spatial mapping)
 
-scPositioner requires the single-cell spatial omics data (stored as `.h5ad` format) as input, where cell population label of each cell needs to be provided. For spot-level SRT datasets, the deconvolution step should be done in advance.
+scPositioner requires single-cell omics data, where cell type label of each cell needs to be provided; 
+                  and spatial reference (both stored as `.h5ad` format) as input.
+ 
+### For spot-level SRT datasets, scPositioner requires cell-type composition of each spot (deconvolution results).
+
+(Optional) If you don't have cell-type composition of each spot, consider running [cell2location](https://github.com/BayraktarLab/cell2location) first.
+(Optional) Here is an example of [running cell2location](tutorial/tutorial_runcell2location.ipynb).
+(Optional) You can install both cell2location and scPositioner in the same virtual environment. scPositioner will automatically run cell2location when no deconvolution results are provided.
 
 Here is an example of scPositioner on spot-level SRT reference (10X Visium):
 * [Demonstration of scPositioner on the spot-level data](tutorial/tutorial_kidney.ipynb)
 
+### For single-cell SRT datasets, scPositioner requires cell type label of each cell.
 An example of scPositioner on single-cell SRT reference (10X Xenium):
 * [Demonstration of scPositioner on the single-cell data](tutorial/tutorial_XeniumBC.ipynb)
 
-And an example of scPositioner on multi-omics (snRNA-seq, snATAC-seq, 10X Visium):
-* [Demonstration of scPositioner on the multi-omics data](tutorial/tutorial_intestine.ipynb)
+### scPositioner provides tutorials to convert data from other omics into gene-associated features. 
+* [Convert proteins names into gene names](tutorial/tutorial_protein2genes.R)
+* [Convert ATAC fragments into gene activity score matrix](tutorial/tutorial_ATACfragments_to_genes.R)
+### and an example of scPositioner on multi-omics datasets.
+* [Demonstration of scPositioner on multi-omics data](tutorial/tutorial_intestine.ipynb)
 
+### For readers concerned with mapping confidence, scPositioner provides a dedicated module and tutorial to evaluate the stability of each mapping.
+* [Mapping confidence evaluation](tutorial/tutorial_StabilityAnalysis.ipynb)
 
 ## Acknowledgements
+This work is supported by the New Generation Artificial Intelligence-National Science and Technology Major Project (2025ZD0122805), the National Natural Science Foundation of China (82274213), the Postdoctoral Fellowship Program and China Postdoctoral Science Foundation (BX2026394). The authors thank the High-Performance Computing Cluster of Zhejiang University Innovation Center of Yangtze River Delta for their technical support.
 
 
 ## About
