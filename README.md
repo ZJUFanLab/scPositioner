@@ -151,6 +151,26 @@ For single-cell-resolution spatial references, scPositioner requires:
 
 ## Quick start
 
+### Modality-specific preprocessing
+
+scPositioner separates modality-specific feature preparation from the shared spatial reconstruction engine.
+
+#### Transcriptomic data
+
+Gene expression profiles can be used directly after standard preprocessing and normalization.
+
+#### Chromatin accessibility data
+
+scATAC-seq or snATAC-seq data can be converted into gene activity scores before spatial reconstruction.
+
+- [Convert ATAC fragments into a gene activity score matrix](tutorial/tutorial_ATACfragments_to_genes.R)
+
+#### Protein-associated data
+
+Protein identifiers can be mapped to corresponding gene symbols to generate gene-associated protein features.
+
+- [Convert protein names into gene names](tutorial/tutorial_protein2genes.R)
+
 ### Spot-level spatial reconstruction
 
 ```python
@@ -199,27 +219,6 @@ Full tutorial:
 
 ---
 
-## Modality-specific preprocessing
-
-scPositioner separates modality-specific feature preparation from the shared spatial reconstruction engine.
-
-### Transcriptomic data
-
-Gene expression profiles can be used directly after standard preprocessing and normalization.
-
-### Chromatin accessibility data
-
-scATAC-seq or snATAC-seq data can be converted into gene activity scores before spatial reconstruction.
-
-- [Convert ATAC fragments into a gene activity score matrix](tutorial/tutorial_ATACfragments_to_genes.R)
-
-### Protein-associated data
-
-Protein identifiers can be mapped to corresponding gene symbols to generate gene-associated protein features.
-
-- [Convert protein names into gene names](tutorial/tutorial_protein2genes.R)
-
----
 
 ## Multi-omics spatial reconstruction
 
@@ -327,7 +326,7 @@ A unified framework for fine-grained spatial reconstruction of single-cell multi
 Software release:
 
 ```text
-scPositioner v1.1.0
+scPositioner v1.0.0
 ```
 
 ---
